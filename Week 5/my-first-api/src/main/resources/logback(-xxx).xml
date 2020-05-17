@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <property name="LOG_FILE" value="LogFile" />
+    <property name="LOG_DIR" value="src/main/resources/logs" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.FileAppender">
+        <encoder>
+            <pattern>%d %-5level [%thread] %class{36}: msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_DIR}/${LOG_FILE}.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+
+            <!-- keep 30 days' worth of history capped at 3GB total size -->
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-5level [%thread] %class{36}: msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate" level="ERROR">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <logger name="nl.inholland.myfirstapi" level="ERROR">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <logger name="nl.inholland.myfirstapi" level="INFO">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <logger name="nl.inholland.myfirstapi" level="WARN">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>

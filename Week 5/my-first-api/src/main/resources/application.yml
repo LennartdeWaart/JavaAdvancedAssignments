@@ -1,0 +1,26 @@
+server:
+  port: 8443
+  ssl:
+    key-store: "inholland.p12"
+    key-store-type: "PKCS12"
+    key-alias: "inholland"
+    key-store-password: "inholland"
+
+stock:
+  quantity: 5
+  pianos:
+    - brand: "Roland"
+      colour: "Black"
+      price: 534.99
+    - brand: "Steinway"
+      colour: "Brown"
+      price: 799.95
+    - brand: "Mason & Hamlin"
+      colour: "White"
+      price: 225.00
+    - brand: "Charles Walter"
+      colour: "Grey"
+      price: 499.00
+    - brand: "Bechstein"
+      colour: "Blue"
+      price: 949.49
